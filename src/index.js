@@ -2,9 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import GlobalStyle from "./globalStyle";
+import IconfontStyle from "./static/iconfont/IconfontStyle"
 
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyle />
+    <IconfontStyle />
     <App />
   </React.StrictMode>,
   document.getElementById("root")

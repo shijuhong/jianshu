@@ -1,13 +1,9 @@
 import { Fragment } from "react";
-import GlobalStyle from "./globalStyle";
+
+import Header from "./common/Header";
 
 function App() {
-  return (
-    <Fragment>
-      <GlobalStyle />
-      <div className="dell">hello world</div>
-    </Fragment>
-  );
+  return <Header />;
 }
 
 export default App;
