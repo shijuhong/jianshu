@@ -1,3 +1,7 @@
+# 简书仿写项目
+
+使用 React 仿写简书，用于提升对 React 使用的熟练度。
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
