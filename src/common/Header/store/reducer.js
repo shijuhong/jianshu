@@ -1,21 +1,26 @@
+import { constants } from ".";
+
 const defaultState = {
   focused: false,
 };
 
 const reducer = (state = defaultState, action) => {
-  if (action.type === "search_focus") {
-    return {
-      ...state,
-      focused: true,
-    };
+  switch (action.type) {
+    case constants.SEARCH_FOCUS:
+      return {
+        ...state,
+        focused: true,
+      };
+    case constants.SEARCH_BLUR:
+      return {
+        ...state,
+        focused: false,
+      };
+    default:
+      return {
+        ...state,
+      };
   }
-  if (action.type === "search_blur") {
-    return {
-      ...state,
-      focused: false,
-    }
-  }
-  return state;
 };
 
 export default reducer;
