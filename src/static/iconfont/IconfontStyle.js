@@ -2,13 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 const IconfontStyle = createGlobalStyle`
   @font-face {
-    font-family: 'iconfont';  /* project id 3278405 */
-    src: url('');
-    src: url('?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_3278405_02z04q7k68b.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_3278405_02z04q7k68b.woff') format('woff'),
-    url('//at.alicdn.com/t/font_3278405_02z04q7k68b.ttf') format('truetype'),
-    url('#iconfont') format('svg');
+    font-family: 'iconfont';  /* Project id 3278405 */
+    src: url('//at.alicdn.com/t/font_3278405_qsvkxcy1jmk.woff2?t=1651312180057') format('woff2'),
+        url('//at.alicdn.com/t/font_3278405_qsvkxcy1jmk.woff?t=1651312180057') format('woff'),
+        url('//at.alicdn.com/t/font_3278405_qsvkxcy1jmk.ttf?t=1651312180057') format('truetype');
   }
 
   .iconfont {
