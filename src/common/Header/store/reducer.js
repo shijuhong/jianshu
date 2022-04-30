@@ -3,6 +3,7 @@ import { fromJS } from "immutable";
 
 const defaultState = fromJS({
   focused: false,
+  list: [],
 });
 
 const reducer = (state = defaultState, action) => {
@@ -11,6 +12,8 @@ const reducer = (state = defaultState, action) => {
       return state.set("focused", true);
     case constants.SEARCH_BLUR:
       return state.set("focused", false);
+    case constants.CHANGE_LIST:
+      return state.set("list", action.data);
     default:
       return state;
   }
