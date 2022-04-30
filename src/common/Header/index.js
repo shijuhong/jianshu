@@ -49,7 +49,17 @@ class Header extends Component {
         >
           <SearchInfoTitle>
             热门搜索
-            <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage)}>
+            <SearchInfoSwitch
+              onClick={() => handleChangePage(page, totalPage, this.spinIcon)}
+            >
+              <span
+                ref={(icon) => {
+                  this.spinIcon = icon;
+                }}
+                className="iconfont spin"
+              >
+                &#xe851;
+              </span>
               换一批
             </SearchInfoSwitch>
           </SearchInfoTitle>
@@ -82,7 +92,9 @@ class Header extends Component {
                 onBlur={handleInputBlur}
               ></NavSearch>
             </CSSTransition>
-            <span className={focused ? "focused iconfont" : "iconfont"}>
+            <span
+              className={focused ? "focused iconfont zoom" : "iconfont zoom"}
+            >
               &#xe6e4;
             </span>
             {this.getListArea()}
@@ -125,7 +137,17 @@ const mapDispatchToProps = (dispatch) => {
     handleMouseLeave() {
       dispatch(actionCreators.mouseLeave());
     },
-    handleChangePage(page, totalPage) {
+    handleChangePage(page, totalPage, spinIcon) {
+      // 每次获取上一次的旋转角度
+      let originAngle = spinIcon.style.transform.replace(/[^0-9]/gi, "");
+      // 初始的时候，origin 没有值
+      if (originAngle) {
+        originAngle = parseInt(originAngle);
+      } else {
+        originAngle = 0;
+      }
+      spinIcon.style.transform = `rotate(${originAngle + 360}deg)`;
+      // 如果此时在最后一页了，页数返回到第一页
       if (page < totalPage) {
         dispatch(actionCreators.changePage(page + 1));
       } else {
