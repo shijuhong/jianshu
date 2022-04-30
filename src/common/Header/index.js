@@ -1,4 +1,3 @@
-import { List } from "immutable";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
@@ -72,7 +71,7 @@ class Header extends Component {
   }
 
   render() {
-    const { focused, handleInputBlur, handleInputFocus } = this.props;
+    const { focused, list, handleInputBlur, handleInputFocus } = this.props;
     return (
       <HeaderWrapper>
         <Logo />
@@ -88,7 +87,7 @@ class Header extends Component {
             <CSSTransition in={focused} timeout={200} classNames="slide">
               <NavSearch
                 className={focused ? "focused" : ""}
-                onFocus={handleInputFocus}
+                onFocus={() => handleInputFocus(list)}
                 onBlur={handleInputBlur}
               ></NavSearch>
             </CSSTransition>
@@ -124,8 +123,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInputFocus() {
-      dispatch(actionCreators.getList());
+    handleInputFocus(list) {
+      list.size === 0 && dispatch(actionCreators.getList());
       dispatch(actionCreators.searchFocus());
     },
     handleInputBlur() {
