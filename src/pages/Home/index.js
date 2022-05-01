@@ -36,17 +36,7 @@ class Home extends Component {
 
 const mapDispatch = (dispatch) => ({
   changeHomeData() {
-    axios.get("/api/home.json").then((res) => {
-      const result = res.data.data;
-      const action = {
-        type: "change_home_data",
-        topicList: result.topicList,
-        articleList: result.articleList,
-        recommendList: result.recommendList,
-        writerList: result.writerList,
-      };
-      dispatch(action);
-    });
+    dispatch(actionCreators.getHomeInfo());
   },
 });
 
