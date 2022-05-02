@@ -1,23 +1,23 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
 import { actionCreators } from "./store";
 import { Content, DetailWrapper, Header } from "./style";
 
-class Detail extends Component {
-  render() {
-    const { title, content } = this.props;
-    return (
-      <DetailWrapper>
-        <Header>{title}</Header>
-        <Content dangerouslySetInnerHTML={{ __html: content }} />
-      </DetailWrapper>
-    );
-  }
+function Detail(props) {
+  const { title, content, getDetail } = props;
+  const { id } = useParams();
 
-  componentDidMount() {
-    const { getDetail } = this.props;
-    getDetail();
-  }
+  useEffect(() => {
+    getDetail(id);
+  });
+
+  return (
+    <DetailWrapper>
+      <Header>{title}</Header>
+      <Content dangerouslySetInnerHTML={{ __html: content }} />
+    </DetailWrapper>
+  );
 }
 
 const mapState = (state) => ({
@@ -26,8 +26,8 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch) => ({
-  getDetail() {
-    dispatch(actionCreators.getDetail())
+  getDetail(id) {
+    dispatch(actionCreators.getDetail(id));
   },
 });
 
