@@ -1,42 +1,22 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Content, DetailWrapper, Header } from "./style";
 
-export default class Detail extends Component {
+class Detail extends Component {
   render() {
+    const { title, content } = this.props;
     return (
       <DetailWrapper>
-        <Header>你听过婚姻式扶贫吗</Header>
-        <Content>
-          <img
-            src="https://img0.baidu.com/it/u=355673106,1614830790&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=500"
-            alt=""
-          />
-          <p>什么是婚姻式扶贫？</p>
-          <p>
-            很多人都觉得自己结不了婚是因为彩礼问题，嫁妆问题，车房问题，长相身高学历问题……真是这样吗？
-          </p>
-          <p>先讲个真实的故事吧，看完以后你就懂了。</p>
-          <p>
-            一个男生91年的，净身高185厘米，双眼皮大眼睛，本科是学舞蹈的艺术生，自身条件还不错，算是女生眼里觉得帅气和有气质的男人，单看外形，在相亲市场上是不错的条件了。
-          </p>
-          <p>
-            在准一线城市工作，月收入7000元，已经贷款买了车和房，每个月还贷8000元多。
-          </p>
-          <p>他原话说：</p>
-          <p>
-            “非常想要找个女孩过日子，因为自己的年龄到了，耽误不起了得赶紧找个人结婚。
-          </p>
-          <p>
-            至于谈恋爱也得奔着结婚目的去，但是28岁以上的女孩绝不考虑，自己还是初婚，所以二婚的女人也绝无可能，更别提再带个孩子的了。
-          </p>
-          <p>
-            都老大不小了，我得现实点，所以恋爱过程一切从简，可以说是只要看对眼就直接跨过恋爱阶段，不搞什么小年轻时候的情情爱爱了，恋爱目的就是两个人组建家庭，共同生活，最好今年就结婚。
-          </p>
-          <p>
-            为了公平起见，我会把收入交给女方，就是说每个月7000的工资全部上交，由女方打理家庭开支，为了共同生活的公平，自己会拿出8000，女方再拿出8000，每个月一共是16000元，全部由女方支配，用于生活的所有开支，包括还贷，由于女方工资的高嘛，多出8000的部分由女孩自由支配。”
-          </p>
-        </Content>
+        <Header>{title}</Header>
+        <Content dangerouslySetInnerHTML={{ __html: content }} />
       </DetailWrapper>
     );
   }
 }
+
+const mapState = (state) => ({
+  title: state.getIn(["detail", "title"]),
+  content: state.getIn(["detail", "content"]),
+});
+
+export default connect(mapState)(Detail);
