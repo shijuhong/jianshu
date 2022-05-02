@@ -8,8 +8,8 @@ import Detail from "./pages/Detail";
 function App() {
   return (
     <Provider store={store}>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" exact element={<Home />}></Route>
           <Route path="/detail" exact element={<Detail />}></Route>

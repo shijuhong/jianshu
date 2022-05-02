@@ -10,9 +10,7 @@ export const HeaderWrapper = styled.div`
 `;
 
 // attrs 里边用来添加标签属性
-export const Logo = styled.a.attrs({
-  href: "/",
-})`
+export const Logo = styled.div`
   position: absolute;
   top: 0;
   left: 0;
