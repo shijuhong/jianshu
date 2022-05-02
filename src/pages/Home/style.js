@@ -113,7 +113,7 @@ export const WriterItem = styled.div`
   .follow {
     float: right;
     font-size: 14px;
-    color:rgb(66, 192, 46);
+    color: rgb(66, 192, 46);
   }
   span {
     display: block;
@@ -128,4 +128,16 @@ export const WriterItem = styled.div`
     font-size: 12px;
     color: rgb(150, 150, 150);
   }
+`;
+
+export const LoadMore = styled.div`
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  margin: 30px 0;
+  background: #a5a5a5;
+  text-align: center;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
 `;
