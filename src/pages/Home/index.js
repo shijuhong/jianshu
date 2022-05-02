@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Topic from "./components/Topic";
 import List from "./components/List";
 import Recommend from "./components/Recommend";
@@ -6,8 +6,10 @@ import Writer from "./components/Writer";
 import { HomeWrapper, HomeLeft, HomeRight, BackTop } from "./style";
 import { actionCreators } from "./store";
 import { connect } from "react-redux";
+import _ from "lodash";
+import { toggleTopShow } from "./store/actionCreators";
 
-class Home extends Component {
+class Home extends PureComponent {
   handleScrollTop() {
     window.scrollTo(0, 0);
   }
@@ -44,12 +46,12 @@ class Home extends Component {
   componentWillUnmount() {
     // 组件销毁之前，事件要解绑
     const { changeScrollTopShow } = this.props;
-    window.removeEventListener("scroll", changeScrollTopShow);
+    window.removeEventListener("scroll", _.throttle(changeScrollTopShow, 500));
   }
 
   bindEvents() {
     const { changeScrollTopShow } = this.props;
-    window.addEventListener("scroll", changeScrollTopShow);
+    window.addEventListener("scroll", _.throttle(changeScrollTopShow, 500));
   }
 }
 

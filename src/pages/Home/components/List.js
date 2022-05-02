@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { connect } from "react-redux";
 import { actionCreators } from "../store";
 import { ListItem, ListInfo, LoadMore } from "../style";
 
-class List extends Component {
+class List extends PureComponent {
   render() {
     const { articleList, articlePage, getMoreList } = this.props;
     return (
