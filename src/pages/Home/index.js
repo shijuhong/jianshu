@@ -7,7 +7,6 @@ import { HomeWrapper, HomeLeft, HomeRight, BackTop } from "./style";
 import { actionCreators } from "./store";
 import { connect } from "react-redux";
 import _ from "lodash";
-import { toggleTopShow } from "./store/actionCreators";
 
 class Home extends PureComponent {
   handleScrollTop() {
