@@ -1,4 +1,4 @@
-import React, { PureComponent, useEffect } from "react";
+import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { actionCreators } from "./store";
